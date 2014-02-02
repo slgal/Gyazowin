@@ -605,7 +605,9 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 			GetTempFileName(tmpDir, _T("gya"), 0, tmpFile);
 			
 			if (savePNG(tmpFile, newBMP)) {
-
+				 char ccommand[500];
+				sprintf_s(ccommand, "mspaint.exe %ls", tmpFile);
+				system(ccommand);
 				// うｐ
 				if (!uploadFile(hWnd, tmpFile)) {
 					// アップロードに失敗...
